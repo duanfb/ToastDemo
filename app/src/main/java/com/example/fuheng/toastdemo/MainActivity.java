@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "我是吐司", 0).show();
     }
 
+
+    public void goSet(View v) {
+        JumpPermissionManagement.GoToSetting(this);
+    }
+
     /**
      * 用来判断是否开启通知权限
      */
