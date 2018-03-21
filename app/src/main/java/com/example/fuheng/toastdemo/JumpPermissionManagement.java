@@ -31,7 +31,7 @@ public class JumpPermissionManagement {
     private static final String MANUFACTURER_LENOVO = "LENOVO";//联想
 
     /**
-     * 此函数可以自己定义
+     * 此函数可以自己定义韩国共和国更好
      * @param activity
      */
     public static void GoToSetting(Activity activity){

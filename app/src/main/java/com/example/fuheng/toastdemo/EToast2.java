@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.PixelFormat;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.view.ViewCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -64,7 +65,7 @@ public class EToast2 {
             handler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    EToast2.this.cancel();
+                    EToast2.this.hide();
                 }
             };
         }
@@ -81,12 +82,15 @@ public class EToast2 {
     public void show() {
         if (oldToast == null) {
             oldToast = toast;
-            manger.addView(contentView, params);
             timer = new Timer();
         } else {
             timer.cancel();
             oldToast.setText(text);
         }
+        if (!ViewCompat.isAttachedToWindow(contentView)) {
+            manger.addView(contentView, params);
+        }
+
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
@@ -94,6 +98,12 @@ public class EToast2 {
                 handler.sendEmptyMessage(1);
             }
         }, time);
+    }
+
+    private void hide() {
+        if (contentView != null && ViewCompat.isAttachedToWindow(contentView)) {
+            manger.removeView(contentView);
+        }
     }
 
     public void cancel() {
@@ -114,6 +124,6 @@ public class EToast2 {
     }
 
     public void setText(CharSequence s) {
-        toast.setText(s);
+        this.text = s;
     }
 }

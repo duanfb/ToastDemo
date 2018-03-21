@@ -1,16 +1,9 @@
 package com.example.fuheng.toastdemo;
 
 import android.app.Activity;
-import android.app.AppOpsManager;
 import android.app.Application;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Build;
 import android.support.v4.app.NotificationManagerCompat;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 /**
  * Author: Blincheng.

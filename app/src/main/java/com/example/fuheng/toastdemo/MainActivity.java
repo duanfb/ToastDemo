@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switcher(View v) {
-        Toast.makeText(this, isNotificationEnabled(this) ? "通知打开了" : "通知关闭了", 0).show();
+        ToastUtil.show(this, isNotificationEnabled(this) ? "通知打开了" : "通知关闭了");
     }
 
     public void toast(View v) {
-        Toast.makeText(this, "我是吐司", 0).show();
+        ToastUtil.show(this, "我是吐司");
     }
 
 
