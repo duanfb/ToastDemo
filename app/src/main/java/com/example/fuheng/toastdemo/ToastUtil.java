@@ -1,7 +1,7 @@
 package com.example.fuheng.toastdemo;
 
 import android.content.Context;
-
+import android.view.Gravity;
 
 
 /**
@@ -27,27 +27,8 @@ public class ToastUtil {
         } else {
             toast.setText(text);
         }
+        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
-
-
-//        Toast.makeText(context,text,duration);
-
-        //see:https://github.com/johnkil/Android-AppMsg
-//        可设置动画，自定义View，弹出优先级等等
-
-//        AppMsg appMsg = AppMsg.makeText(context, text, AppMsg.STYLE_ALERT);
-//        appMsg.setLayoutGravity(Gravity.CENTER);
-//        appMsg.setParent(R.id.fl_msg_content);
-//        appMsg.setAnimation(R.anim.slide_in_top, R.anim.slide_out_top);
-//        switch (duration) {
-//            case Toast.LENGTH_SHORT:
-//                appMsg.setDuration(AppMsg.LENGTH_SHORT);
-//                break;
-//            case Toast.LENGTH_LONG:
-//                appMsg.setDuration(AppMsg.LENGTH_LONG);
-//                break;
-//        }
-//        appMsg.show();
     }
 
     public static void cancel() {

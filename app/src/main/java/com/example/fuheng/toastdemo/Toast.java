@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.NotificationManagerCompat;
+import android.view.View;
 
 /**
  * Author: Blincheng.
@@ -12,33 +13,14 @@ import android.support.v4.app.NotificationManagerCompat;
  */
 
 public class Toast {
-    private static int checkNotification = 0;
     private Object mToast;
 
     private Toast(Context context, String message, int duration) {
-        if (context instanceof Application) {
-            checkNotification = 0;
-        } else {
-            checkNotification = isNotificationEnabled(context) ? 0 : 1;
-        }
-
-        if (checkNotification == 1) {
-            mToast = EToast2.makeText(context, message, duration);
-        } else {
+        boolean enabled = isNotificationEnabled(context);
+        if (enabled) {
             mToast = android.widget.Toast.makeText(context, message, duration);
-        }
-    }
-
-    private Toast(Context context, int resId, int duration) {
-        if (context instanceof Application) {
-            checkNotification = 0;
         } else {
-            checkNotification = isNotificationEnabled(context) ? 0 : 1;
-        }
-        if (checkNotification == 1 && context instanceof Activity) {
-            mToast = EToast2.makeText(context, resId, duration);
-        } else {
-            mToast = android.widget.Toast.makeText(context, resId, duration);
+            mToast = EToast2.makeText(context, message, duration);
         }
     }
 
@@ -47,7 +29,7 @@ public class Toast {
     }
 
     public static Toast makeText(Context context, int resId, int duration) {
-        return new Toast(context, resId, duration);
+        return makeText(context, context.getResources().getString(resId), duration);
     }
 
     public void show() {
@@ -71,6 +53,22 @@ public class Toast {
             ((EToast2) mToast).setText(s);
         } else if (mToast instanceof android.widget.Toast) {
             ((android.widget.Toast) mToast).setText(s);
+        }
+    }
+
+    public void setGravity(int gravity, int xOffset, int yOffset) {
+        if (mToast instanceof EToast2) {
+            ((EToast2) mToast).setGravity(gravity, xOffset, yOffset);
+        } else if (mToast instanceof android.widget.Toast) {
+            ((android.widget.Toast) mToast).setGravity(gravity, xOffset, yOffset);
+        }
+    }
+
+    public void setView(View view) {
+        if (mToast instanceof EToast2) {
+            ((EToast2) mToast).setView(view);
+        } else if (mToast instanceof android.widget.Toast) {
+            ((android.widget.Toast) mToast).setView(view);
         }
     }
 

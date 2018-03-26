@@ -16,20 +16,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switcher(View v) {
-        ToastUtil.show(this, isNotificationEnabled(this) ? "通知打开了" : "通知关闭了");
-        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        ToastUtil.show(getApplicationContext(), isNotificationEnabled(this) ? "通知打开了" : "通知关闭了");
     }
 
     public void toast(View v) {
         ToastUtil.show(this, "我是吐司");
-        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.black));
     }
 
 
     public void goSet(View v) {
-//        JumpPermissionManagement.GoToSetting(this);
-        StatusBarUtil.setLightMode(this);
-//        StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.white));
+        JumpPermissionManagement.GoToSetting(this);
     }
 
     /**
