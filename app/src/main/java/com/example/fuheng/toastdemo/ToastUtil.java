@@ -2,38 +2,29 @@ package com.example.fuheng.toastdemo;
 
 import android.content.Context;
 import android.view.Gravity;
+import android.widget.Toast;
 
 
 /**
- * Author: neo.duan
- * Date: 2017/02/18
- * Desc: 吐司工具类
+ * Toast工具类
+ * Created by 田慧楠 on 2017/03/23
  */
+
 public class ToastUtil {
 
-    public static Toast toast;
+    private static com.example.fuheng.toastdemo.Toast  toast;
 
-    private ToastUtil() {
-        throw new AssertionError();
-    }
-    
-    public static void show(Context context, String text){
-        show(context, text, EToast2.LENGTH_SHORT);
-    }
-
-    private static void show(Context context, String text, int duration) {
+    /**
+     * 气泡展示
+     */
+    public static void show(Context context, String msg) {
         if (toast == null) {
-            toast = Toast.makeText(context, text,duration);
+            toast = com.example.fuheng.toastdemo.Toast.makeText(context, msg,
+                    Toast.LENGTH_SHORT);
         } else {
-            toast.setText(text);
+            toast.setText(String.valueOf(msg));
         }
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
-    }
-
-    public static void cancel() {
-        if (toast != null) {
-            toast.cancel();
-        }
     }
 }

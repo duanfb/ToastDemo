@@ -18,11 +18,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Author: Blincheng.
- * Date: 2017/6/30.
- * Description:EToast2.0
+ * @author neo.duan
+ * @date 2018/3/23
+ * @desc 解决5.0+系統关闭吐司 thanks:https://github.com/Blincheng/EToast2
  */
-
 public class EToast2 {
 
     public static final int LENGTH_SHORT = 0;
@@ -91,7 +90,7 @@ public class EToast2 {
         params.height = WindowManager.LayoutParams.WRAP_CONTENT;
         params.width = WindowManager.LayoutParams.WRAP_CONTENT;
         params.format = PixelFormat.TRANSLUCENT;
-        params.windowAnimations = R.style.MyToast;
+        params.windowAnimations = R.style.Animation_Toast;
         params.type = WindowManager.LayoutParams.TYPE_TOAST;
         params.setTitle("EToast2");
         params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
@@ -133,6 +132,13 @@ public class EToast2 {
 
     public void setView(View view) {
         mNextView = view;
+    }
+
+    /**
+     * Return the view.
+     */
+    public View getView() {
+        return mNextView;
     }
 
     /**

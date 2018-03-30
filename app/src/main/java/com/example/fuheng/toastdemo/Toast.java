@@ -1,17 +1,14 @@
 package com.example.fuheng.toastdemo;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.NotificationManagerCompat;
 import android.view.View;
 
 /**
- * Author: Blincheng.
- * Date: 2017/6/30.
- * Description:
+ * @author neo.duan
+ * @date 2018/3/23
+ * @desc 解决5.0+系統关闭吐司 thanks:https://github.com/Blincheng/EToast2
  */
-
 public class Toast {
     private Object mToast;
 
